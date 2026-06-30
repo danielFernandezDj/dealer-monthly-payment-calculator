@@ -17,19 +17,14 @@ import {
 } from "lucide-react"
 
 export default function Page() {
-  const [vehiclePrice, setVehiclePrice] = useState("")
-  const [downPayment, setDownPayment] = useState("")
-  const [currentPayoff, setCurrentPayoff] = useState("")
-  const [dealerTradeOffer, setDealerTradeOffer] = useState("")
-  const [salesTaxRate, setSalesTaxRate] = useState("6.25")
-  const [dealerFees, setDealerFees] = useState("225")
-  const [otherFees, setOtherFees] = useState("")
-  const [apr, setApr] = useState("")
-
-  function parseFormattedNumber(value: string) {
-    if (!value) return 0
-    return Number(value.replace(/,/g, ""))
-  }
+  const [vehiclePrice, setVehiclePrice] = useState<number>(0)
+  const [downPayment, setDownPayment] = useState<number>(0)
+  const [currentPayoff, setCurrentPayoff] = useState<number>(0)
+  const [dealerTradeOffer, setDealerTradeOffer] = useState<number>(0)
+  const [salesTaxRate, setSalesTaxRate] = useState<number>(6.25)
+  const [dealerFees, setDealerFees] = useState<number>(225)
+  const [otherFees, setOtherFees] = useState<number>(0)
+  const [apr, setApr] = useState<number>(7.99)
 
   function tradeEquityCalculator(
     currentPayoff: number,
@@ -75,11 +70,14 @@ export default function Page() {
                 min={"0"}
                 max={"99000"}
                 maxLength={6}
-                value={vehiclePrice}
+                value={
+                  vehiclePrice === 0 ? "" : vehiclePrice.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setVehiclePrice(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setVehiclePrice(numberValue)
                 }}
                 required
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -106,11 +104,14 @@ export default function Page() {
                 min={"0"}
                 max={"99000"}
                 maxLength={6}
-                value={downPayment}
+                value={
+                  downPayment === 0 ? "" : downPayment.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setDownPayment(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setDownPayment(numberValue)
                 }}
                 required
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -137,11 +138,16 @@ export default function Page() {
                 min={"0"}
                 max={"99000"}
                 maxLength={6}
-                value={currentPayoff}
+                value={
+                  currentPayoff === 0
+                    ? ""
+                    : currentPayoff.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setCurrentPayoff(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setCurrentPayoff(numberValue)
                 }}
                 required
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -160,11 +166,16 @@ export default function Page() {
                 min={"0"}
                 max={"99000"}
                 maxLength={6}
-                value={dealerTradeOffer}
+                value={
+                  dealerTradeOffer === 0
+                    ? ""
+                    : dealerTradeOffer.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setDealerTradeOffer(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setDealerTradeOffer(numberValue)
                 }}
                 required
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -183,17 +194,8 @@ export default function Page() {
             </div>
             <div className="flex w-full items-center justify-center">
               <h2 className="text-2xl font-bold">
-                <span>
-                  {" "}
-                  {parseFormattedNumber(currentPayoff) >
-                  parseFormattedNumber(dealerTradeOffer)
-                    ? "+$"
-                    : "-$"}{" "}
-                </span>{" "}
-                {tradeEquityCalculator(
-                  parseFormattedNumber(currentPayoff),
-                  parseFormattedNumber(dealerTradeOffer)
-                )}
+                <span> {currentPayoff > dealerTradeOffer ? "+$" : "-$"} </span>{" "}
+                {tradeEquityCalculator(currentPayoff, dealerTradeOffer)}
               </h2>
             </div>
           </div>
@@ -217,11 +219,14 @@ export default function Page() {
                 max={"50"}
                 maxLength={6}
                 step={"0.01"}
-                value={salesTaxRate}
+                value={
+                  salesTaxRate === 0 ? "" : salesTaxRate.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setSalesTaxRate(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setSalesTaxRate(numberValue)
                 }}
                 required
                 className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -242,11 +247,14 @@ export default function Page() {
                 min={"0"}
                 max={"10000"}
                 maxLength={6}
-                value={dealerFees}
+                value={
+                  dealerFees === 0 ? "" : dealerFees.toLocaleString("en-US")
+                }
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setDealerFees(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setDealerFees(numberValue)
                 }}
                 required
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
@@ -265,11 +273,12 @@ export default function Page() {
                 min={"0"}
                 max={"10000"}
                 maxLength={6}
-                value={otherFees}
+                value={otherFees === 0 ? "" : otherFees.toLocaleString("en-US")}
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setOtherFees(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setOtherFees(numberValue)
                 }}
                 required
                 id="other-fees"
@@ -298,11 +307,12 @@ export default function Page() {
                 min={"0"}
                 max={"10000"}
                 maxLength={6}
-                value={apr}
+                value={apr === 0 ? "" : apr.toLocaleString("en-US")}
                 onChange={(e) => {
-                  const numbersOnly = e.target.value.replace(/\D/g, "")
-                  const formatted = Number(numbersOnly).toLocaleString("en-US")
-                  setApr(formatted)
+                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const numberValue = Number(rawValue)
+
+                  setApr(numberValue)
                 }}
                 className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
               />
