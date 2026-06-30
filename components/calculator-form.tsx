@@ -3,7 +3,7 @@ import { Label } from "./ui/label"
 import { Card } from "./ui/card"
 import { Input } from "./ui/input"
 
-import { CarFront, UserRound } from "lucide-react"
+import { CarFront, UserRound, Repeat, FileText, Calculator, RotateCcw } from "lucide-react"
 
 export default function CalculatorForm() {
   return (
@@ -12,7 +12,7 @@ export default function CalculatorForm() {
       <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
         <div className="flex items-center gap-2">
           <CarFront className="h-6 w-auto text-blue-700" />
-          <p>1. VEHICLE</p>
+          <p className="font-semibold">1. VEHICLE</p>
         </div>
         <div className="flex w-full items-center justify-between">
           <p>Vehicle Price</p>
@@ -33,7 +33,7 @@ export default function CalculatorForm() {
       <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
         <div className="flex items-center gap-2">
           <UserRound className="h-6 w-auto text-blue-700" />
-          <p>2. CUSTOMER CASH</p>
+          <p className="font-semibold">2. CUSTOMER CASH</p>
         </div>
         <div className="flex w-full items-center justify-between">
           <p>Down Payment</p>
@@ -53,8 +53,8 @@ export default function CalculatorForm() {
       {/* Trade In */}
       <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
         <div className="flex items-center gap-2">
-          <CarFront className="h-6 w-auto text-blue-700" />
-          <p>3. TRADE-IN</p>
+          <Repeat className="h-6 w-auto text-blue-700" />
+          <p className="font-semibold">3. TRADE-IN</p>
         </div>
         <div className="flex w-full items-center justify-between">
           <p>Current Payoff</p>
@@ -103,8 +103,8 @@ export default function CalculatorForm() {
       {/* Taxes and Fees */}
       <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
         <div className="flex items-center gap-2">
-          <CarFront className="h-6 w-auto text-blue-700" />
-          <p>4. TAXES & FEES</p>
+          <FileText className="h-6 w-auto text-blue-700" />
+          <p className="font-semibold">4. TAXES & FEES</p>
         </div>
         <div className="flex w-full items-center justify-between">
           <p>Sales Tax Rate (%)</p>
@@ -153,21 +153,36 @@ export default function CalculatorForm() {
       <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
         <div className="flex items-center gap-2">
           <UserRound className="h-6 w-auto text-blue-700" />
-          <p>5. FINANCING </p>
+          <p className="font-semibold">5. FINANCING </p>
         </div>
         <div className="flex w-full items-center justify-between">
-          <p>APR (Annual Percentage Rate)</p>
+          <p>
+            APR <span className="text-xs">(Annual Percentage Rate)</span>
+          </p>
           <div className="flex items-center rounded-md border border-gray-300 px-4">
-            <span>$</span>
             <Input
-              placeholder="5.000"
+              placeholder="7.99"
               type="number"
-              required
               id="down-payment"
-              className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+              className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
+            <span className="-ml-3 p-0">%</span>
           </div>
         </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Button className="m-auto w-full bg-blue-700 py-6 text-lg text-white hover:bg-blue-800">
+          <Calculator className="size-6" />
+          Calculate
+        </Button>
+        <Button
+          variant="outline"
+          className="border-blue-700 bg-transparent py-6 text-lg text-blue-700"
+        >
+          {" "}
+          <RotateCcw className="size-6" /> Reset All
+        </Button>
       </div>
     </form>
   )
