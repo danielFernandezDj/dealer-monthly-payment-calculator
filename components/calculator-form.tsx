@@ -1,11 +1,24 @@
+"use client"
+
+import { useState } from "react"
+
 import { Button } from "./ui/button"
 import { Label } from "./ui/label"
 import { Card } from "./ui/card"
 import { Input } from "./ui/input"
 
-import { CarFront, UserRound, Repeat, FileText, Calculator, RotateCcw } from "lucide-react"
+import {
+  CarFront,
+  UserRound,
+  Repeat,
+  FileText,
+  Calculator,
+  RotateCcw,
+} from "lucide-react"
 
 export default function CalculatorForm() {
+  const [value, setValue] = useState("")
+
   return (
     <form className="flex h-full w-full flex-col gap-4 p-2 text-black">
       {/* Vehicle Information */}
@@ -19,10 +32,20 @@ export default function CalculatorForm() {
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <span>$</span>
             <Input
-              placeholder="35.000"
-              type="number"
-              required
               id="car-price"
+              type="text"
+              inputMode="numeric"
+              placeholder="35.000"
+              min={"0"}
+              max={"99000"}
+              maxLength={6}
+              value={value}
+              onChange={(e) => {
+                const numbersOnly = e.target.value.replace(/\D/g, "")
+                const formatted = Number(numbersOnly).toLocaleString("en-US");
+                setValue(formatted)
+              }}
+              required
               className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
           </div>
@@ -40,10 +63,13 @@ export default function CalculatorForm() {
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <span>$</span>
             <Input
+              id="down-payment"
               placeholder="5.000"
+              min={"0"}
+              max={"99000"}
+              max-length={5}
               type="number"
               required
-              id="down-payment"
               className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
           </div>
@@ -61,10 +87,13 @@ export default function CalculatorForm() {
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <span>$</span>
             <Input
+              id="current-payoff"
               placeholder="10.000"
+              min={"0"}
+              max={"99000"}
+              max-length={5}
               type="number"
               required
-              id="current-payoff"
               className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
           </div>
@@ -74,10 +103,13 @@ export default function CalculatorForm() {
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <span>$</span>
             <Input
+              id="dealer-trade-offer"
               placeholder="8.000"
+              min={"0"}
+              max={"99000"}
+              max-length={5}
               type="number"
               required
-              id="dealer-trade-offer"
               className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
           </div>
@@ -110,10 +142,15 @@ export default function CalculatorForm() {
           <p>Sales Tax Rate (%)</p>
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <Input
-              placeholder="6.25"
-              type="number"
-              required
               id="sales-tax-rate"
+              type="number"
+              placeholder="6.25"
+              defaultValue={"6.25"}
+              min={"0"}
+              max={"50"}
+              max-length={5}
+              step={"0.01"}
+              required
               className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
             <span className="-ml-3 p-0">%</span>
@@ -125,10 +162,14 @@ export default function CalculatorForm() {
           <div className="flex items-center rounded-md border border-gray-300 px-4">
             <span>$</span>
             <Input
-              placeholder="225"
-              type="number"
-              required
               id="dealer-fees"
+              type="number"
+              placeholder="225"
+              defaultValue={"225"}
+              min={"0"}
+              max={"10000"}
+              max-length={"5"}
+              required
               className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
             />
           </div>
