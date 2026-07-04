@@ -17,14 +17,16 @@ import {
 } from "lucide-react"
 
 export default function Page() {
-  const [vehiclePrice, setVehiclePrice] = useState<number>(0)
-  const [downPayment, setDownPayment] = useState<number>(0)
-  const [currentPayoff, setCurrentPayoff] = useState<number>(0)
-  const [dealerTradeOffer, setDealerTradeOffer] = useState<number>(0)
+  const [vehiclePrice, setVehiclePrice] = useState<number>(35000)
+  const [downPayment, setDownPayment] = useState<number>(5000)
+  const [currentPayoff, setCurrentPayoff] = useState<number>(10000)
+  const [dealerTradeOffer, setDealerTradeOffer] = useState<number>(8000)
   const [salesTaxRate, setSalesTaxRate] = useState<number>(6.25)
   const [dealerFees, setDealerFees] = useState<number>(225)
   const [otherFees, setOtherFees] = useState<number>(0)
   const [apr, setApr] = useState<number>(7.99)
+
+  const loanTermMonths = [48, 60, 72]
 
   function tradeEquityCalculator(
     currentPayoff: number,
@@ -38,6 +40,23 @@ export default function Page() {
 
     return 0
   }
+
+  // Loan = $20,000
+  // APR = 6%
+  // Months = 60
+
+  // Implementation for calculating out the door price
+  function amountFinanced() {
+    return (
+      vehiclePrice +
+      (currentPayoff - dealerTradeOffer) +
+      (dealerFees + otherFees) +
+      (salesTaxRate / 100 * vehiclePrice) -
+      downPayment
+    )
+  }
+
+  console.log("Out the Door Price: ", amountFinanced(), "Taxes: ", salesTaxRate / 100 * vehiclePrice)
 
   return (
     <div className="flex min-h-svh flex-col bg-slate-100">
