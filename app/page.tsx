@@ -1,11 +1,20 @@
 "use client"
 
 import { useState } from "react"
+import MathResolution from "@/components/math-resolution"
 
 import { Button } from "../components/ui/button"
-// import { Label } from "../components/ui/label"
-// import { Card } from "../components/ui/card"
 import { Input } from "../components/ui/input"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
 
 import {
   CarFront,
@@ -41,22 +50,32 @@ export default function Page() {
     return 0
   }
 
-  // Loan = $20,000
-  // APR = 6%
-  // Months = 60
-
-  // Implementation for calculating out the door price
+  // Implementation for calculating out-door-price
   function amountFinanced() {
     return (
       vehiclePrice +
       (currentPayoff - dealerTradeOffer) +
       (dealerFees + otherFees) +
-      (salesTaxRate / 100 * vehiclePrice) -
+      (salesTaxRate / 100) * vehiclePrice -
       downPayment
     )
   }
 
-  console.log("Out the Door Price: ", amountFinanced(), "Taxes: ", salesTaxRate / 100 * vehiclePrice)
+  console.log(
+    "Out the Door Price: ",
+    amountFinanced(),
+    "Taxes: ",
+    (salesTaxRate / 100) * vehiclePrice
+  )
+
+  // Reset all the Inputs
+  function resetAll() {
+    setVehiclePrice(0)
+    setDownPayment(0)
+    setCurrentPayoff(0)
+    setDealerTradeOffer(0)
+    setOtherFees(0)
+  }
 
   return (
     <div className="flex min-h-svh flex-col bg-slate-100">
@@ -69,7 +88,6 @@ export default function Page() {
       </div>
 
       {/* Main Content */}
-      {/* <div className="b-4 flex w-full border-2"> */}
       <form className="flex h-full w-full flex-col gap-4 p-2 text-black">
         {/* Vehicle Information */}
         <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
@@ -299,7 +317,6 @@ export default function Page() {
 
                   setOtherFees(numberValue)
                 }}
-                required
                 id="other-fees"
                 className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
               />
@@ -341,12 +358,29 @@ export default function Page() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <Button className="m-auto w-full bg-blue-700 py-6 text-lg text-white hover:bg-blue-800">
-            <Calculator className="size-6" />
-            Calculate
-          </Button>
+          <Drawer direction="right">
+            <DrawerTrigger asChild>
+              <Button className="m-auto w-full bg-blue-700 py-6 text-lg text-white hover:bg-blue-800">
+                <Calculator className="size-6" />
+                Calculate
+              </Button>
+            </DrawerTrigger>
+
+            <DrawerContent className="bg-slate-100 p-2">
+              <MathResolution />
+
+              <DrawerFooter>
+                <DrawerClose>
+                  <Button variant={"secondary"} className="px-8 py-6 text-xl">
+                    Close
+                  </Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+
           <Button
-            variant="outline"
+            onClick={resetAll}
             className="border-blue-700 bg-transparent py-6 text-lg text-blue-700"
           >
             {" "}
@@ -354,7 +388,6 @@ export default function Page() {
           </Button>
         </div>
       </form>
-      {/* </div> */}
     </div>
   )
 }
