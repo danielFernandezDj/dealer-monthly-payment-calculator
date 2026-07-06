@@ -35,8 +35,6 @@ export default function Page() {
   const [otherFees, setOtherFees] = useState<number>(0)
   const [apr, setApr] = useState<number>(7.99)
 
-  const loanTermMonths = [48, 60, 72]
-
   function tradeEquityCalculator(
     currentPayoff: number,
     dealerTradeOffer: number
@@ -61,9 +59,11 @@ export default function Page() {
     )
   }
 
+  const amountFinancedValue = amountFinanced()
+
   console.log(
     "Out the Door Price: ",
-    amountFinanced(),
+    amountFinancedValue,
     "Taxes: ",
     (salesTaxRate / 100) * vehiclePrice
   )
@@ -367,13 +367,13 @@ export default function Page() {
             </DrawerTrigger>
 
             <DrawerContent className="bg-slate-100 p-2">
-              <MathResolution />
+              <MathResolution amountFinanced={amountFinancedValue} />
 
               <DrawerFooter>
                 <DrawerClose>
-                  <Button variant={"secondary"} className="px-8 py-6 text-xl">
+                  <span className="rounded-md bg-black px-8 py-2 text-xl text-white hover:bg-gray-800">
                     Close
-                  </Button>
+                  </span>
                 </DrawerClose>
               </DrawerFooter>
             </DrawerContent>
