@@ -9,10 +9,10 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
+  // DrawerDescription,
   DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
+  // DrawerHeader,
+  // DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
@@ -367,7 +367,7 @@ export default function Page() {
             </DrawerTrigger>
 
             <DrawerContent className="bg-slate-100 p-2">
-              <MathResolution amountFinanced={amountFinancedValue} />
+              <MathResolution amountFinanced={amountFinancedValue} apr={apr} />
 
               <DrawerFooter>
                 <DrawerClose>
