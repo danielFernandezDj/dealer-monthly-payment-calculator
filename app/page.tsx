@@ -9,10 +9,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  // DrawerDescription,
   DrawerFooter,
-  // DrawerHeader,
-  // DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
@@ -40,12 +37,12 @@ export default function Page() {
     dealerTradeOffer: number
   ) {
     if (currentPayoff > dealerTradeOffer) {
-      return currentPayoff - dealerTradeOffer
-    } else if (currentPayoff < dealerTradeOffer) {
       return dealerTradeOffer - currentPayoff
+    } else if (currentPayoff < dealerTradeOffer) {
+      return currentPayoff - dealerTradeOffer 
     }
 
-    return 0
+    return dealerTradeOffer - currentPayoff
   }
 
   // Implementation for calculating out-door-price
@@ -371,7 +368,7 @@ export default function Page() {
 
               <DrawerFooter>
                 <DrawerClose>
-                  <span className="rounded-md bg-black px-8 py-2 text-xl text-white hover:bg-gray-800">
+                  <span className="rounded-md bg-blue-950 px-8 py-2 text-xl text-white hover:bg-gray-800">
                     Close
                   </span>
                 </DrawerClose>
