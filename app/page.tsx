@@ -37,12 +37,12 @@ export default function Page() {
     dealerTradeOffer: number
   ) {
     if (currentPayoff > dealerTradeOffer) {
-      return dealerTradeOffer - currentPayoff
+      return currentPayoff - dealerTradeOffer
     } else if (currentPayoff < dealerTradeOffer) {
-      return currentPayoff - dealerTradeOffer 
+      return dealerTradeOffer - currentPayoff
     }
 
-    return dealerTradeOffer - currentPayoff
+    return 0
   }
 
   // Implementation for calculating out-door-price
@@ -228,7 +228,7 @@ export default function Page() {
             </div>
             <div className="flex w-full items-center justify-center">
               <h2 className="text-2xl font-bold">
-                <span> {currentPayoff > dealerTradeOffer ? "+$" : "-$"} </span>{" "}
+                <span> {currentPayoff <= dealerTradeOffer ? "+$" : "-$"} </span>{" "}
                 {tradeEquityCalculator(currentPayoff, dealerTradeOffer)}
               </h2>
             </div>
