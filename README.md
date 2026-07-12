@@ -10,7 +10,7 @@ The project exists as a practical frontend exercise in building a finance-orient
 
  <p align="center">
   <img src="./public/Dealer Calculator : First Screenshot.webp" alt="Application Screenshot 1" width="48%" />
-  <img src="./public/Dealer Calculator : First Screenshot.webp" alt="Application Screenshot 2" width="48%" />
+  <img src="./public/Dealer Calculator : Second Screenshot.webp" alt="Application Screenshot 2" width="48%" />
 </p>
 
 ---
