@@ -8,10 +8,10 @@ The project exists as a practical frontend exercise in building a finance-orient
 
 ## Screenshot
 
-![Application Screenshot](./public/Delaer%20Calculator%20:%20First%20Screenshot.webp)
-![Application Screenshot](./public/Delaer%20Calculator%20:%20Second%20Screenshot.webp)
-
-> Screenshot coming soon.
+ <p align="center">
+  <img src="./public/Dealer Calculator : First Screenshot.webp" alt="Application Screenshot 1" width="48%" />
+  <img src="./public/Dealer Calculator : First Screenshot.webp" alt="Application Screenshot 2" width="48%" />
+</p>
 
 ---
 
