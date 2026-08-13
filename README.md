@@ -2,7 +2,7 @@
 
 Dealer Monthly Payment Calculator is a focused web application for estimating auto financing scenarios from a dealer-style workflow. It is designed for quick what-if calculations around trade-in equity, taxes, fees, and APR so a user can move from raw deal inputs to estimated monthly payments in a single flow.
 
-The project is a finance-oriented software engineering project built around controlled inputs, derived values, business calculation logic, automated testing, and a clean mobile-friendly results experience. It is well suited for portfolio review because it combines product thinking, UI structure, financial logic, and testable application behavior in one focused application.Ï
+The project is a finance-oriented software engineering project built around controlled inputs, derived values, business calculation logic, automated testing, and a clean mobile-friendly results experience. It is well suited for portfolio review because it combines product thinking, UI structure, financial logic, and testable application behavior in one focused application.
 
 ---
 
