@@ -2,7 +2,7 @@
 
 Dealer Monthly Payment Calculator is a focused web application for estimating auto financing scenarios from a dealer-style workflow. It is designed for quick what-if calculations around trade-in equity, taxes, fees, and APR so a user can move from raw deal inputs to estimated monthly payments in a single flow.
 
-The project exists as a practical frontend exercise in building a finance-oriented form with controlled inputs, derived values, and a clean mobile-friendly results experience. It is well suited for portfolio review because it combines product thinking, UI structure, and business calculation logic in one small application.
+The project is a finance-oriented software engineering project built around controlled inputs, derived values, business calculation logic, automated testing, and a clean mobile-friendly results experience. It is well suited for portfolio review because it combines product thinking, UI structure, financial logic, and testable application behavior in one focused application.Ï
 
 ---
 
@@ -48,6 +48,14 @@ When the user selects **Calculate**, the results panel opens and displays the fi
 
 ---
 
+## Testing
+
+The project uses Jest-based unit tests to validate core financial calculation behavior and protect expected outputs as the calculation logic evolves.
+
+Current testing focuses on deterministic business logic where incorrect results would directly affect payment estimates. Future testing work will expand edge-case coverage and introduce end-to-end testing for complete user workflows.
+
+---
+
 ## Learning Objectives
 
 This project demonstrates several practical software engineering concepts:
@@ -63,12 +71,10 @@ This project demonstrates several practical software engineering concepts:
 
 ## Installation
 
-```bash
-git clone <repository-url>
+git clone https://github.com/danielFernandezDj/dealer-monthly-payment-calculator.git
 cd dealer-monthly-payment-calculator
 pnpm install
 pnpm dev
-```
 
 The application will be available locally at `http://localhost:3000`.
 
@@ -99,7 +105,8 @@ The application will be available locally at `http://localhost:3000`.
 - Support a full amortization schedule instead of monthly payment summaries only.
 - Add configurable loan terms rather than relying only on preset ranges.
 - Persist scenarios so users can compare multiple financing structures.
-- Introduce automated tests for the financial calculation helpers.
+- Expand Jest coverage for financial calculation edge cases and validation behavior.
+- Add Playwright end-to-end tests for critical calculator workflows.
 - Expand the tax and fee model to support more realistic state- or dealer-specific rules.
 
 ---
