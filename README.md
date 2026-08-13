@@ -71,13 +71,12 @@ This project demonstrates several practical software engineering concepts:
 
 ## Installation
 
+'''bash
 git clone https://github.com/danielFernandezDj/dealer-monthly-payment-calculator.git
-
 cd dealer-monthly-payment-calculator
-
 pnpm install
-
 pnpm dev
+'''
 
 The application will be available locally at `http://localhost:3000`.
 
