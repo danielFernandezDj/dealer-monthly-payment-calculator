@@ -85,7 +85,7 @@ export default function Page() {
       </div>
 
       {/* Main Content */}
-      <form className="flex h-full w-full flex-col gap-4 p-2 text-black">
+      <form className="flex h-full w-full flex-col gap-4 p-4 text-black lg:w-1/3 lg:m-auto">
         {/* Vehicle Information */}
         <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
           <div className="flex items-center gap-2">
