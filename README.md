@@ -44,7 +44,6 @@ When the user selects **Calculate**, the results panel opens and displays the fi
 - Vaul
 - Lucide React
 - next-themes
-- Jest
 
 ---
 

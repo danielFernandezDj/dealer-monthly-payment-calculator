@@ -22,7 +22,7 @@ import {
   RotateCcw,
 } from "lucide-react"
 
-export default function Page() {
+export default function DealerMath() {
   const [vehiclePrice, setVehiclePrice] = useState<number>(35000)
   const [downPayment, setDownPayment] = useState<number>(5000)
   const [currentPayoff, setCurrentPayoff] = useState<number>(10000)
@@ -340,9 +340,9 @@ export default function Page() {
                 min={"0"}
                 max={"10000"}
                 maxLength={6}
-                value={apr === 0 ? "" : apr.toLocaleString("en-US")}
+                // value={apr === 0 ? "" : apr.toLocaleString("en-US")}
                 onChange={(e) => {
-                  const rawValue = e.target.value.replace(/\D/g, "")
+                  const rawValue = e.target.value.replace(/\D/g, ".")
                   const numberValue = Number(rawValue)
 
                   setApr(numberValue)
