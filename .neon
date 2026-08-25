@@ -1,0 +1,10 @@
+{
+  "orgId": "org-plain-dawn-06107058",
+  "projectId": "round-band-46013394",
+  "_init": {
+    "features": [
+      "database",
+      "auth"
+    ]
+  }
+}
