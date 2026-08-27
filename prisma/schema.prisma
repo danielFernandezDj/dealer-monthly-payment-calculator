@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "./app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  authId       String        @unique
+  email        String        @unique
+  createdAt    DateTime      @default(now())
+  calculations Calculation[]
+}
+
+model Calculation {
+  id             Int      @id @default(autoincrement())
+  user           User?     @relation(fields: [userId], references: [id])
+  userId         Int?
+  vehiclePrice   Decimal  @db.Decimal(10, 2)
+  downPayment    Int
+  apr            Decimal  @db.Decimal(10, 2)
+  salesTax       Decimal  @db.Decimal(10, 2)
+  dealerFees     Decimal  @db.Decimal(10, 2)
+  otherFees      Decimal  @db.Decimal(10, 2)
+  tradeValue     Decimal  @db.Decimal(10, 2)
+  tradePayoff    Decimal  @db.Decimal(10, 2)
+  term           Int
+  monthlyPayment Decimal  @db.Decimal(10, 2)
+  createdAt      DateTime @default(now())
+}
