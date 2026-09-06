@@ -3,12 +3,14 @@ import DealerCalculator from "@/components/dealer-calculator"
 
 export const dynamic = "force-dynamic"
 
-export default async function Home() {
-  const { data: session } = await auth.getSession()
+type DealerCalculator = {
+  user: {
+    name: string
+    email: string
+  } | null
+}
 
-  return (
-    <DealerCalculator
-      user={session?.user ?? null}
-    />
-  )
+export default async function Home({ user }: DealerCalculator) {
+  const { data: session } = await auth.getSession()
+  return user ? <div>Signed in</div> : <div>Sign-in and sign-up buttons</div>
 }
