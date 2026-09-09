@@ -24,10 +24,12 @@ import {
 } from "lucide-react"
 
 type DealerCalculatorProps = {
-  user: User | null
+  isSignedIn: boolean
 }
 
-export default function DealerCalculator({ user }: DealerCalculatorProps) {
+export default function DealerCalculator({
+  isSignedIn,
+}: DealerCalculatorProps) {
   const [vehiclePrice, setVehiclePrice] = useState<number>(35000)
   const [downPayment, setDownPayment] = useState<number>(5000)
   const [currentPayoff, setCurrentPayoff] = useState<number>(10000)
