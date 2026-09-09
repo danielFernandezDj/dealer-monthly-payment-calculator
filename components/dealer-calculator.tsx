@@ -91,7 +91,7 @@ export default function DealerCalculator({
             Dealer Payment <br /> Calculator
           </p>
         </div>
-        <LogButtons />
+        <LogButtons isSignedIn={isSignedIn} />
       </div>
 
       {/* Main Content */}
