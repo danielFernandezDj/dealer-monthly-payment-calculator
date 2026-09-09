@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import MathResolution from "@/components/math-resolution"
-import Link from "next/link"
+import LogButtons from "@/components/log-buttons"
 
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
@@ -23,8 +23,11 @@ import {
   RotateCcw,
 } from "lucide-react"
 
+type DealerCalculatorProps = {
+  user: User | null
+}
 
-export default function DealerMath() {
+export default function DealerCalculator({ user }: DealerCalculatorProps) {
   const [vehiclePrice, setVehiclePrice] = useState<number>(35000)
   const [downPayment, setDownPayment] = useState<number>(5000)
   const [currentPayoff, setCurrentPayoff] = useState<number>(10000)
@@ -79,33 +82,20 @@ export default function DealerMath() {
   return (
     <div className="flex min-h-svh flex-col bg-slate-100">
       {/* Header */}
-      <div className="flex w-full items-center justify-between gap-2 bg-blue-950 px-4 py-5">
+      <div className="flex w-full items-center justify-between gap-2 bg-blue-950 px-4 py-5 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <CarFront className="h-12 w-12 text-white" />
           <p className="text-xl font-bold text-white">
             Dealer Payment <br /> Calculator
           </p>
         </div>
-        <div className="flex gap-4">
-          <Link
-            href="/auth/sign-in"
-            className="rounded-lg border-2 px-4 py-2 font-semibold text-white hover:text-gray-300"
-          >
-            Sign-in
-          </Link>
-          <Link
-            href="/auth/sign-up"
-            className="rounded-lg border-2 px-4 py-2 font-semibold text-white hover:text-gray-300"
-          >
-            Sign-up
-          </Link>
-        </div>
+        <LogButtons />
       </div>
 
       {/* Main Content */}
-      <form className="flex h-full w-full flex-col gap-4 p-4 text-black lg:m-auto lg:w-1/3">
+      <form className="mx-auto grid h-full w-full max-w-7xl grid-cols-1 gap-4 p-4 text-black sm:p-6 lg:grid-cols-12 lg:gap-6 lg:p-8 xl:gap-8">
         {/* Vehicle Information */}
-        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
+        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md sm:p-5 lg:col-span-4 lg:min-h-[190px] xl:p-6">
           <div className="flex items-center gap-2">
             <CarFront className="h-6 w-auto text-blue-700" />
             <p className="font-semibold">1. VEHICLE</p>
@@ -132,14 +122,14 @@ export default function DealerMath() {
                   setVehiclePrice(numberValue)
                 }}
                 required
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
         </div>
 
         {/* Customer Cash */}
-        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
+        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md sm:p-5 lg:col-span-4 lg:min-h-[190px] xl:p-6">
           <div className="flex items-center gap-2">
             <UserRound className="h-6 w-auto text-blue-700" />
             <p className="font-semibold">2. CUSTOMER CASH</p>
@@ -166,14 +156,14 @@ export default function DealerMath() {
                   setDownPayment(numberValue)
                 }}
                 required
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
         </div>
 
         {/* Trade In */}
-        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
+        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md sm:p-5 lg:col-span-4 lg:min-h-[190px] xl:p-6">
           <div className="flex items-center gap-2">
             <Repeat className="h-6 w-auto text-blue-700" />
             <p className="font-semibold">3. TRADE-IN</p>
@@ -202,7 +192,7 @@ export default function DealerMath() {
                   setCurrentPayoff(numberValue)
                 }}
                 required
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
@@ -230,12 +220,12 @@ export default function DealerMath() {
                   setDealerTradeOffer(numberValue)
                 }}
                 required
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
 
-          <div className="flex w-full justify-between gap-2 rounded-md border border-green-200 bg-green-50 p-2 text-green-700">
+          <div className="flex w-full justify-between gap-3 rounded-md border border-green-200 bg-green-50 p-3 text-green-700 lg:mt-auto lg:p-4">
             <div className="flex flex-col">
               <p className="text-sm">Trade Equity (Auto)</p>
               <div className="flex gap-2">
@@ -254,7 +244,7 @@ export default function DealerMath() {
         </div>
 
         {/* Taxes and Fees */}
-        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
+        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md sm:p-5 lg:col-span-6 xl:p-6">
           <div className="flex items-center gap-2">
             <FileText className="h-6 w-auto text-blue-700" />
             <p className="font-semibold">4. TAXES & FEES</p>
@@ -281,7 +271,7 @@ export default function DealerMath() {
                   setSalesTaxRate(numberValue)
                 }}
                 required
-                className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
               <span className="-ml-3 p-0">%</span>
             </div>
@@ -309,7 +299,7 @@ export default function DealerMath() {
                   setDealerFees(numberValue)
                 }}
                 required
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
@@ -333,14 +323,14 @@ export default function DealerMath() {
                   setOtherFees(numberValue)
                 }}
                 id="other-fees"
-                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
             </div>
           </div>
         </div>
 
         {/* Financing Trigger */}
-        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md">
+        <div className="flex w-full flex-col gap-4 rounded-lg bg-white p-4 shadow-md sm:p-5 lg:col-span-6 xl:p-6">
           <div className="flex items-center gap-2">
             <UserRound className="h-6 w-auto text-blue-700" />
             <p className="font-semibold">5. FINANCING </p>
@@ -365,17 +355,17 @@ export default function DealerMath() {
 
                   setApr(numberValue)
                 }}
-                className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0"
+                className="ml-2.5 w-20 border-0 focus-visible:border-0 focus-visible:ring-0 lg:w-28"
               />
               <span className="-ml-3 p-0">%</span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 lg:col-span-12 lg:flex-row lg:gap-4">
           <Drawer direction="right">
             <DrawerTrigger asChild>
-              <Button className="m-auto w-full bg-blue-700 py-6 text-lg text-white hover:bg-blue-800">
+              <Button className="m-auto w-full bg-blue-700 py-6 text-lg text-white hover:bg-blue-800 lg:flex-1">
                 <Calculator className="size-6" />
                 Calculate
               </Button>
@@ -396,7 +386,7 @@ export default function DealerMath() {
 
           <Button
             onClick={resetAll}
-            className="border-blue-700 bg-transparent py-6 text-lg text-blue-700"
+            className="w-full border-blue-700 bg-transparent py-6 text-lg text-blue-700 lg:flex-1"
           >
             {" "}
             <RotateCcw className="size-6" /> Reset All
