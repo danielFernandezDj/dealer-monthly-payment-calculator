@@ -1,6 +1,14 @@
 import Link from "next/link"
 
-export default function logButtons() {
+type LogButtonsProps = {
+  isSignedIn: boolean
+}
+
+export default function LogButtons({ isSignedIn }: LogButtonsProps) {
+  if (isSignedIn) {
+    return <span className="font-semibold text-white">Signed in</span>
+  }
+
   return (
     <div className="flex gap-4">
       <Link
